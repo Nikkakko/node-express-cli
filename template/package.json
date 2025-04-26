@@ -1,0 +1,54 @@
+{
+  "name": "node-express-template",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon",
+    "build": "tsc && cpy \"uploads/**/*\" ./dist/uploads && cpy ./dist && cpy \"src/fonts/*.ttf\" ./dist/src/fonts && cpy \"public/**/*\" ./dist/public",
+    "serve": "node dist/src/index.js",
+    "migrate": "npx prisma migrate deploy",
+    "seed": "npx ts-node --files prisma/seed.ts"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "prisma",
+    "template"
+  ],
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "ts-node src/app.ts",
+    "ext": "ts, js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "cookie-parser": "^1.4.7",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.2",
+    "@types/cookie-parser": "^1.4.7",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "author": "Nikako",
+  "license": "ISC",
+  "description": "A template for creating Node + Express + Prisma applications."
+}
